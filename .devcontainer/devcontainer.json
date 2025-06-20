@@ -1,21 +1,17 @@
 {
-  "name": "fastapi-vue-mysql",
-  "dockerComposeFile": "../docker-compose.yml",
-  "service": "backend",
-  "workspaceFolder": "/workspaces/projeto-votacao-eng-software",
+  "name": "FastAPI + Vue.js + MySQL",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
-      },
       "extensions": [
         "ms-python.python",
-        "ms-azuretools.vscode-docker",
-        "esbenp.prettier-vscode",
-        "formulahendry.auto-close-tag"
+        "Vue.volar",
+        "ms-vscode.vscode-json"
       ]
     }
   },
-  "postCreateCommand": "pip install -r backend/requirements.txt",
-  "forwardPorts": [8000, 5173, 3306]
+  "postCreateCommand": "pip install -r requirements.txt && npm install",
+  "forwardPorts": [8000, 3000, 3306]
 }
