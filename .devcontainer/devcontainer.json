@@ -1,0 +1,21 @@
+{
+  "name": "fastapi-vue-mysql",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "backend",
+  "workspaceFolder": "/workspaces/projeto-votacao-eng-software",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "esbenp.prettier-vscode",
+        "formulahendry.auto-close-tag"
+      ]
+    }
+  },
+  "postCreateCommand": "pip install -r backend/requirements.txt",
+  "forwardPorts": [8000, 5173, 3306]
+}
