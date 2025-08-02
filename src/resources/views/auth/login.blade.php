@@ -62,7 +62,7 @@
             </div>
             
             <div class="forgot-password">
-                <a href="#">Esqueceu sua senha?</a>
+                <a href="{{ route('password.request') }}">Esqueceu sua senha?</a>
             </div>
             
             <div class="register-link">
