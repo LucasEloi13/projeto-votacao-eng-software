@@ -14,6 +14,8 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/password/forgot', [AuthController::class, 'showForgotPassword'])->name('password.request'); // View do formulário de recuperação de senha
+Route::post('/password/forgot', [AuthController::class, 'sendResetLink'])->name('password.email'); // Envio do e-mail de recuperação de senha
 
 // Rotas de cadastro
 Route::get('/cadastro', [CadastroController::class, 'index'])->name('cadastro.index');
