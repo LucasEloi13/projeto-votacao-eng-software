@@ -1,0 +1,187 @@
+body {
+    /* Cor de fundo roxa escura: #4338CA */
+    background-color: #4338CA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Garante que o corpo ocupe 100% da altura da viewport */
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* Fonte Inter */
+    padding: 20px 0; /* Espaçamento vertical para telas menores */
+}
+
+.cadastro-container {
+    background-color: #fff; /* Fundo branco para o formulário de cadastro */
+    padding: 40px;
+    border-radius: 12px; /* Cantos arredondados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra */
+    width: 100%;
+    max-width: 500px; /* Largura máxima para o container */
+    text-align: center;
+    margin: auto;
+}
+
+h2 {
+    color: #333; /* Cor do título */
+    margin-bottom: 30px;
+    font-weight: 600; /* Negrito para o título */
+}
+
+.form-label {
+    color: #555; /* Cor para os rótulos dos campos */
+    text-align: left;
+    display: block; /* Garante que o rótulo ocupe sua própria linha */
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-control {
+    border-radius: 8px; /* Cantos arredondados para os inputs */
+    padding: 12px 15px;
+    border: 1px solid #ddd; /* Borda sutil */
+    box-shadow: none; /* Remove a sombra padrão */
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.form-control:focus {
+    border-color: #4338CA; /* Cor da borda ao focar */
+    box-shadow: 0 0 0 0.2rem rgba(67, 56, 202, 0.25); /* Sombra de foco com a cor roxa */
+    outline: none;
+}
+
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px 12px;
+    padding-right: 40px;
+}
+
+.btn-primary {
+    background-color: #4338CA; /* Roxo principal para o botão */
+    border-color: #4338CA;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3c31b5; /* Tom um pouco mais escuro no hover */
+    border-color: #3c31b5;
+    transform: translateY(-1px);
+}
+
+.btn-primary:focus {
+    background-color: #3c31b5;
+    border-color: #3c31b5;
+    box-shadow: 0 0 0 0.2rem rgba(67, 56, 202, 0.25); /* Sombra de foco com a cor roxa */
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.form-check-label {
+    color: #666; /* Cor para o texto do checkbox */
+    font-size: 14px;
+    text-align: left;
+}
+
+.form-check-input:checked {
+    background-color: #4338CA; /* Cor de fundo quando marcado */
+    border-color: #4338CA; /* Cor da borda quando marcado */
+}
+
+.form-check-input:focus {
+    border-color: #4338CA;
+    box-shadow: 0 0 0 0.2rem rgba(67, 56, 202, 0.25);
+}
+
+.form-check {
+    text-align: left;
+}
+
+.login-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.login-link a {
+    color: #4338CA; /* Cor roxa para o link de login */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.alert-success {
+    background-color: #d1fae5;
+    border-color: #a7f3d0;
+    color: #065f46;
+}
+
+.alert-danger {
+    background-color: #fee2e2;
+    border-color: #fecaca;
+    color: #991b1b;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .cadastro-container {
+        margin: 10px;
+        padding: 30px 25px;
+        max-width: 100%;
+    }
+    
+    h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    
+    .form-control {
+        padding: 10px 12px;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cadastro-container {
+        padding: 25px 20px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    .form-label {
+        font-size: 14px;
+    }
+    
+    .form-control {
+        font-size: 14px;
+    }
+}

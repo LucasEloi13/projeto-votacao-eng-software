@@ -37,7 +37,7 @@ class AuthController extends Controller
                 'cpf' => $usuario->cpf
             ]);
 
-            // Redirecionar baseado no tipo de usuário
+            // Redirecionar para página inicial após login
             switch ($usuario->tipo_usuario) {
                 case 'administrador':
                     return redirect()->route('dashboard.admin');
@@ -59,18 +59,5 @@ class AuthController extends Controller
     {
         Session::flush();
         return redirect()->route('login')->with('message', 'Logout realizado com sucesso!');
-    }
-
-    public function checkAuth($tipoUsuario = null)
-    {
-        if (!Session::has('usuario')) {
-            return redirect()->route('login');
-        }
-
-        if ($tipoUsuario && Session::get('usuario')['tipo_usuario'] !== $tipoUsuario) {
-            return redirect()->route('login');
-        }
-
-        return null;
     }
 }
