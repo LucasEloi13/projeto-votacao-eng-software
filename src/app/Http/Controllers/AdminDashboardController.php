@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Models\GerenciarCondominios;
 
 class AdminDashboardController extends Controller
 {
@@ -28,9 +29,8 @@ class AdminDashboardController extends Controller
             // Em um sistema real seria: DB::table('pautas')->where('status', 'ativa')->count();
             $votacoesAtivas = 0;
                 
-            // Para demonstração, definimos condomínios como 0
-            // Em um sistema real seria: DB::table('condominios')->count();
-            $totalCondominios = 0;
+            // Buscar total de condomínios usando o modelo
+            $totalCondominios = GerenciarCondominios::contarTotal();
             
             // Buscar atividades recentes dos usuários
             $atividadesRecentes = DB::table('usuarios')

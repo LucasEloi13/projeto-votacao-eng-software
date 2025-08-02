@@ -37,16 +37,16 @@ class AuthController extends Controller
                 'cpf' => $usuario->cpf
             ]);
 
-            // Redirecionar para página inicial após login
+            // Redirecionar baseado no tipo de usuário
             switch ($usuario->tipo_usuario) {
                 case 'administrador':
-                    return redirect()->route('dashboard.admin');
+                    return redirect()->route('admin.dashboard')->with('success', 'Login realizado com sucesso!');
                 case 'sindico':
-                    return redirect()->route('dashboard.sindico');
+                    return redirect('/')->with('success', 'Login realizado com sucesso! Bem-vindo, Síndico!');
                 case 'morador':
-                    return redirect()->route('dashboard.morador');
+                    return redirect('/')->with('success', 'Login realizado com sucesso! Bem-vindo, Morador!');
                 default:
-                    return redirect()->route('login');
+                    return redirect('/')->with('success', 'Login realizado com sucesso!');
             }
         }
 

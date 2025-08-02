@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\Admin\GerenciarCondominiosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,12 +26,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::patch('/usuarios/{id}/aprovar', [AdminDashboardController::class, 'aprovarUsuario'])->name('usuarios.aprovar');
     Route::patch('/usuarios/{id}/rejeitar', [AdminDashboardController::class, 'rejeitarUsuario'])->name('usuarios.rejeitar');
     Route::delete('/usuarios/{id}', [AdminDashboardController::class, 'excluirUsuario'])->name('usuarios.excluir');
-});
-
-
-// Rotas do dashboard
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard/admin', [App\Http\Controllers\DashboardController::class, 'admin'])->name('dashboard.admin');
-    Route::get('/dashboard/sindico', [App\Http\Controllers\DashboardController::class, 'sindico'])->name('dashboard.sindico');
-    Route::get('/dashboard/morador', [App\Http\Controllers\DashboardController::class, 'morador'])->name('dashboard.morador');
+    
+    // Rotas de Condomínios
+    Route::get('/condominios', [GerenciarCondominiosController::class, 'index'])->name('condominios.index');
+    Route::get('/condominios/create', [GerenciarCondominiosController::class, 'create'])->name('condominios.create');
+    Route::post('/condominios', [GerenciarCondominiosController::class, 'store'])->name('condominios.store');
+    Route::get('/condominios/{id}/edit', [GerenciarCondominiosController::class, 'edit'])->name('condominios.edit');
+    Route::put('/condominios/{id}', [GerenciarCondominiosController::class, 'update'])->name('condominios.update');
+    Route::delete('/condominios/{id}', [GerenciarCondominiosController::class, 'destroy'])->name('condominios.destroy');
+    Route::get('/condominios/search', [GerenciarCondominiosController::class, 'search'])->name('condominios.search');
 });

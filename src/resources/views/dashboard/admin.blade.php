@@ -155,7 +155,7 @@
         </a>
     </div>
     <div class="col">
-        <a href="#" class="admin-button">
+        <a href="{{ route('admin.condominios.index') }}" class="admin-button">
             <i class="fas fa-building"></i>
             <span>Gerenciar Condomínios</span>
         </a>
