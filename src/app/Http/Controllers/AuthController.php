@@ -55,6 +55,19 @@ class AuthController extends Controller
         ])->withInput();
     }
 
+    // Exibe o formulário de recuperação de senha
+    public function showForgotPassword() {
+        return view('auth.forgot-password');
+    }
+
+    // Processa o envio do link de recuperação de senha
+    public function sendResetLink(Request $request){
+        $request->validate(['email' => 'required|email']);
+        // Simula envio do e-mail (pode implementar lógica real depois)
+        // Retorna para a view com mensagem de sucesso
+        return back()->with('status', 'E-mail de recuperação enviado com sucesso');
+    }
+
     public function logout()
     {
         Session::flush();
