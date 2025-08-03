@@ -27,8 +27,11 @@
         color: #333;
         font-size: 1.5rem;
         font-weight: 600;
-        margin-bottom: 25px;
-        margin-top: 35px;
+        margin-bottom: 0;
+        margin-top: 0;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
     }
     .admin-button {
         background-color: #fff;

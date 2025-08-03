@@ -21,7 +21,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === 'votacoes' ? 'active' : '' }}" 
-                        href="#"
+                        href="{{ route('sindico.votacoes.index') }}"
                        @if($currentPage === 'votacoes') aria-current="page" @endif>
                         Votações
                     </a>

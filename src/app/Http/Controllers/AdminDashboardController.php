@@ -49,7 +49,7 @@ class AdminDashboardController extends Controller
                 'atividadesRecentes' => $atividadesRecentes
             ];
 
-            return view('dashboard.admin', $dados);
+            return view('admin.dashboard', $dados);
 
         } catch (\Exception $e) {
             return redirect('/')->with('error', 'Erro ao carregar o dashboard: ' . $e->getMessage());

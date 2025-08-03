@@ -31,6 +31,6 @@ class SindicoController extends Controller
             'totalVotacoesEncerradas' => $votacoesEncerradas->count(),
         ];
 
-        return view('dashboard.sindico', $dados);
+        return view('sindico.dashboard', $dados);
     }
 }

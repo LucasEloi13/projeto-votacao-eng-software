@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\Admin\GerenciarCondominiosController;
 use App\Http\Controllers\SindicoController;
+use App\Http\Controllers\Sindico\VotacoesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,5 +42,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 // Rotas de Síndicos 
 Route::prefix('sindico')->name('sindico.')->group(function () {
     Route::get('/dashboard', [SindicoController::class, 'dashboard'])->name('dashboard');
-    // Outras rotas específicas para o síndico podem ser adicionadas aqui
+    
+    // Rotas de Votações do Síndico
+    Route::resource('votacoes', VotacoesController::class);
+    Route::patch('/votacoes/{votacao}/encerrar', [VotacoesController::class, 'encerrar'])->name('votacoes.encerrar');
 });
