@@ -40,9 +40,9 @@ class AuthController extends Controller
             // Redirecionar baseado no tipo de usuário
             switch ($usuario->tipo_usuario) {
                 case 'administrador':
-                    return redirect()->route('admin.dashboard')->with('success', 'Login realizado com sucesso!');
+                    return redirect()->route('admin.dashboard');
                 case 'sindico':
-                    return redirect('/')->with('success', 'Login realizado com sucesso! Bem-vindo, Síndico!');
+                    return redirect()->route('sindico.dashboard');
                 case 'morador':
                     return redirect('/')->with('success', 'Login realizado com sucesso! Bem-vindo, Morador!');
                 default:

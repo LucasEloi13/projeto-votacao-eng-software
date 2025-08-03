@@ -5,6 +5,7 @@ use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\Admin\GerenciarCondominiosController;
+use App\Http\Controllers\SindicoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,4 +36,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/condominios/{id}', [GerenciarCondominiosController::class, 'update'])->name('condominios.update');
     Route::delete('/condominios/{id}', [GerenciarCondominiosController::class, 'destroy'])->name('condominios.destroy');
     Route::get('/condominios/search', [GerenciarCondominiosController::class, 'search'])->name('condominios.search');
+});
+
+// Rotas de Síndicos 
+Route::prefix('sindico')->name('sindico.')->group(function () {
+    Route::get('/dashboard', [SindicoController::class, 'dashboard'])->name('dashboard');
+    // Outras rotas específicas para o síndico podem ser adicionadas aqui
 });

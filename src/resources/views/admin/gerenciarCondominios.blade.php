@@ -141,36 +141,7 @@
 @endpush
 
 @section('navbar')
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Vota Comunidade</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.dashboard') }}">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Síndicos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Moradores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('admin.condominios.index') }}">Condomínios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Resultados</a>
-                </li>
-                <li class="nav-item">
-                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                        @csrf
-                        <button class="btn btn-sair" type="submit">Sair</button>
-                    </form>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<x-admin_navbar current-page="condominios" />
 @endsection
 
 @section('content')
