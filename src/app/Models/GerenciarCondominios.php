@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class GerenciarCondominios
 {
@@ -13,39 +14,24 @@ class GerenciarCondominios
     public static function buscarTodos()
     {
         try {
-            // Como não temos tabela de condomínios ainda, vamos simular com dados fictícios
-            // Em um sistema real seria: return DB::table('condominios')->get();
-            return collect([
-                (object)[
-                    'id_condominio' => 1,
-                    'nome' => 'Vila da Folha',
-                    'endereco' => 'Av. Secundária, 456',
-                    'sindico_nome' => 'Maria Souza',
-                    'id_sindico' => 1,
-                    'created_at' => now()->subDays(30),
-                    'updated_at' => now()->subDays(5)
-                ],
-                (object)[
-                    'id_condominio' => 2,
-                    'nome' => 'Vila da Cortina',
-                    'endereco' => 'Av. Beta Alámo, 177',
-                    'sindico_nome' => 'Carlos Mariano',
-                    'id_sindico' => 2,
-                    'created_at' => now()->subDays(25),
-                    'updated_at' => now()->subDays(3)
-                ],
-                (object)[
-                    'id_condominio' => 3,
-                    'nome' => 'Vila da Cerâmica',
-                    'endereco' => 'Av. Primária, 8951',
-                    'sindico_nome' => 'Breno Silva',
-                    'id_sindico' => 3,
-                    'created_at' => now()->subDays(20),
-                    'updated_at' => now()->subDay()
-                ]
-            ]);
+            // Tentar buscar dados reais primeiro
+            $resultado = DB::table('condominios')
+                ->select('id_condominio', 'nome', 'endereco', 'cidade', 'estado', 'created_at', 'updated_at')
+                ->orderBy('nome')
+                ->get();
+            
+            // Se há dados na tabela, retornar eles
+            if ($resultado->count() > 0) {
+                return $resultado->map(function ($item) {
+                    $item->sindico_nome = null; // Placeholder para síndico
+                    $item->id_sindico = null;
+                    return $item;
+                });
+            }
         } catch (\Exception $e) {
-            throw new \Exception('Erro ao buscar condomínios: ' . $e->getMessage());
+            // Se falhar, logar o erro e retornar uma coleção vazia
+            \Log::error('Erro ao buscar condomínios: ' . $e->getMessage());
+            return collect();
         }
     }
 
@@ -239,5 +225,54 @@ class GerenciarCondominios
         }
 
         return $erros;
+    }
+    
+    /**
+     * Busca síndicos disponíveis (que não gerenciam nenhum condomínio)
+     */
+    public static function buscarSindicosDisponiveis()
+    {
+        $query = "
+            SELECT s.id_sindico, u.nome 
+            FROM sindicos s
+            INNER JOIN usuarios u ON s.id_usuario = u.id_usuario
+            WHERE s.id_sindico NOT IN (
+                SELECT DISTINCT id_sindico 
+                FROM condominios 
+                WHERE id_sindico IS NOT NULL
+            )
+            ORDER BY u.nome
+        ";
+        
+        return DB::select($query);
+    }
+    
+    /**
+     * Deleta um condomínio
+     */
+    public static function deletar($id)
+    {
+        try {
+            DB::beginTransaction();
+            
+            // Verifica se o condomínio existe
+            $condominio = self::buscarPorId($id);
+            if (!$condominio) {
+                throw new \Exception("Condomínio não encontrado");
+            }
+            
+            // Remove relacionamentos primeiro (se houver)
+            DB::delete("DELETE FROM moradores WHERE id_condominio = ?", [$id]);
+            
+            // Remove o condomínio
+            $result = DB::delete("DELETE FROM condominios WHERE id_condominio = ?", [$id]);
+            
+            DB::commit();
+            
+            return $result > 0;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 }

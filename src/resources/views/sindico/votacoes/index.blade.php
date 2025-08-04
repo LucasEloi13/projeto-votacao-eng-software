@@ -3,7 +3,7 @@
 @section('title', 'Votações em Aberto')
 
 @section('navbar')
-<x-sindico_navbar currentPage="dashboard" />
+<x-sindico_navbar currentPage="votacoes" />
 @endsection
 
 @section('content')
