@@ -44,7 +44,7 @@ class AuthController extends Controller
                 case 'sindico':
                     return redirect()->route('sindico.dashboard');
                 case 'morador':
-                    return redirect('/')->with('success', 'Login realizado com sucesso! Bem-vindo, Morador!');
+                    return redirect()->route('morador.dashboard');
                 default:
                     return redirect('/')->with('success', 'Login realizado com sucesso!');
             }

@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('sindico.dashboard') }}">
+        <a class="navbar-brand" href="{{ route('morador.dashboard') }}">
             Vota Comunidade
         </a>
         
@@ -14,28 +14,21 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === 'dashboard' ? 'active' : '' }}" 
-                       href="{{ route('sindico.dashboard') }}"
+                       href="#"
                        @if($currentPage === 'dashboard') aria-current="page" @endif>
                         Início
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === 'votacoes' ? 'active' : '' }}" 
-                        href="{{ route('sindico.votacoes.index') }}"
+                        href="#"
                        @if($currentPage === 'votacoes') aria-current="page" @endif>
                         Votações
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ $currentPage === 'moradores' ? 'active' : '' }}" 
-                       href="{{ route('sindico.moradores.index') }}"
-                       @if($currentPage === 'moradores') aria-current="page" @endif>
-                        Moradores
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link {{ $currentPage === 'resultados' ? 'active' : '' }}" 
-                       href="{{ route('sindico.resultados.index') }}"
+                       href="#"
                        @if($currentPage === 'resultados') aria-current="page" @endif>
                         Resultados
                     </a>

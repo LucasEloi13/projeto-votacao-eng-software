@@ -9,7 +9,10 @@ use App\Http\Controllers\Admin\GerenciarSindicosController;
 use App\Http\Controllers\Admin\GerenciarMoradoresController;
 use App\Http\Controllers\Admin\GerenciarResultadosController;
 use App\Http\Controllers\SindicoController;
+use App\Http\Controllers\MoradorController;
 use App\Http\Controllers\Sindico\VotacoesController;
+use App\Http\Controllers\Sindico\MoradoresController;
+use App\Http\Controllers\Sindico\ResultadosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,4 +61,15 @@ Route::prefix('sindico')->name('sindico.')->group(function () {
     // Rotas de Votações do Síndico
     Route::resource('votacoes', VotacoesController::class);
     Route::patch('/votacoes/{votacao}/encerrar', [VotacoesController::class, 'encerrar'])->name('votacoes.encerrar');
+    
+    // Rotas de Moradores do Síndico
+    Route::get('/moradores', [MoradoresController::class, 'index'])->name('moradores.index');
+    
+    // Rotas de Resultados do Síndico
+    Route::get('/resultados', [ResultadosController::class, 'index'])->name('resultados.index');
+});
+
+// Rotas de Moradores
+Route::prefix('morador')->name('morador.')->group(function () {
+    Route::get('/dashboard', [MoradorController::class, 'dashboard'])->name('dashboard');
 });

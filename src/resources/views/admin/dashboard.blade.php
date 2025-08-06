@@ -131,7 +131,7 @@
         </a>
     </div>
     <div class="col">
-        <a href="{{ route('admin.resultados.index') }}" class="admin-button">
+        <a href="{{ route('admin.resultados.index') }}˜`" class="admin-button">
             <i class="fas fa-chart-bar"></i>
             <span>Visualizar Resultados</span>
         </a>
