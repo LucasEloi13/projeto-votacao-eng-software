@@ -21,14 +21,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === 'sindicos' ? 'active' : '' }}" 
-                       href="#"
+                       href="{{ route('admin.sindicos.index') }}"
                        @if($currentPage === 'sindicos') aria-current="page" @endif>
                         Síndicos
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === 'moradores' ? 'active' : '' }}" 
-                       href="#"
+                       href="{{ route('admin.moradores.index') }}"
                        @if($currentPage === 'moradores') aria-current="page" @endif>
                         Moradores
                     </a>
@@ -42,7 +42,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === 'resultados' ? 'active' : '' }}" 
-                       href="#"
+                       href="{{ route('admin.resultados.index') }}"
                        @if($currentPage === 'resultados') aria-current="page" @endif>
                         Resultados
                     </a>

@@ -5,6 +5,9 @@ use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\Admin\GerenciarCondominiosController;
+use App\Http\Controllers\Admin\GerenciarSindicosController;
+use App\Http\Controllers\Admin\GerenciarMoradoresController;
+use App\Http\Controllers\Admin\GerenciarResultadosController;
 use App\Http\Controllers\SindicoController;
 use App\Http\Controllers\Sindico\VotacoesController;
 
@@ -37,6 +40,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/condominios/{id}', [GerenciarCondominiosController::class, 'update'])->name('condominios.update');
     Route::delete('/condominios/{id}', [GerenciarCondominiosController::class, 'destroy'])->name('condominios.destroy');
     Route::get('/condominios/search', [GerenciarCondominiosController::class, 'search'])->name('condominios.search');
+    
+    // Rotas de Síndicos
+    Route::get('/sindicos', [GerenciarSindicosController::class, 'index'])->name('sindicos.index');
+    
+    // Rotas de Moradores
+    Route::get('/moradores', [GerenciarMoradoresController::class, 'index'])->name('moradores.index');
+    
+    // Rotas de Resultados
+    Route::get('/resultados', [GerenciarResultadosController::class, 'index'])->name('resultados.index');
 });
 
 // Rotas de Síndicos 

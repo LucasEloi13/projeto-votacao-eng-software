@@ -43,7 +43,7 @@ class GerenciarCondominiosController extends Controller
                 $condominios = GerenciarCondominios::buscarTodos();
             }
 
-            return view('admin.gerenciarCondominios', compact('condominios', 'termo'));
+            return view('admin.condominio.index', compact('condominios', 'termo'));
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
@@ -60,7 +60,7 @@ class GerenciarCondominiosController extends Controller
 
         try {
             $sindicos = GerenciarCondominios::buscarSindicos();
-            return view('admin.condominios.create', compact('sindicos'));
+            return view('admin.condominio.create', compact('sindicos'));
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
@@ -117,7 +117,7 @@ class GerenciarCondominiosController extends Controller
 
             $sindicos = GerenciarCondominios::buscarSindicos();
             
-            return view('admin.condominios.edit', compact('condominio', 'sindicos'));
+            return view('admin.condominio.edit', compact('condominio', 'sindicos'));
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());

@@ -113,9 +113,15 @@
 <h3 class="section-title">Dashboard do Administrador</h3>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 mb-5">
     <div class="col">
-        <a href="{{ route('admin.usuarios') }}" class="admin-button">
+        <a href="{{ route('admin.sindicos.index') }}" class="admin-button">
+            <i class="fas fa-user-tie"></i>
+            <span>Gerenciar Síndicos</span>
+        </a>
+    </div>
+    <div class="col">
+        <a href="{{ route('admin.moradores.index') }}" class="admin-button">
             <i class="fas fa-users"></i>
-            <span>Gerenciar Usuários</span>
+            <span>Gerenciar Moradores</span>
         </a>
     </div>
     <div class="col">
@@ -125,13 +131,7 @@
         </a>
     </div>
     <div class="col">
-        <a href="#" class="admin-button">
-            <i class="fas fa-user-tie"></i>
-            <span>Gerenciar Síndicos</span>
-        </a>
-    </div>
-    <div class="col">
-        <a href="#" class="admin-button">
+        <a href="{{ route('admin.resultados.index') }}" class="admin-button">
             <i class="fas fa-chart-bar"></i>
             <span>Visualizar Resultados</span>
         </a>

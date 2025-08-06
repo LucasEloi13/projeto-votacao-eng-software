@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
-@section('title', 'Gerenciar Condomínios')
+@section('title', 'Gerenciar Moradores')
 
 @section('navbar')
-    <x-admin_navbar current-page="condominios" />
+    <x-admin_navbar current-page="moradores" />
 @endsection
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Gerenciar Condomínios</h2>
-        <a href="#" class="btn btn-primary">Adicionar Condomínio</a>
+        <h2>Gerenciar Moradores</h2>
+        <a href="#" class="btn btn-primary">Adicionar Morador</a>
     </div>
 
     <div class="mb-3">
         <div class="input-group">
             <span class="input-group-text"><i class="fas fa-search"></i></span>
-            <input type="text" class="form-control" placeholder="Pesquisar condomínios">
+            <input type="text" class="form-control" placeholder="Pesquisar moradores">
         </div>
     </div>
 
@@ -26,34 +26,53 @@
                     <thead>
                         <tr>
                             <th scope="col">NOME</th>
-                            <th scope="col">ENDEREÇO</th>
-                            <th scope="col">SÍNDICO</th>
+                            <th scope="col">CONDOMÍNIO</th>
+                            <th scope="col">STATUS</th>
                             <th scope="col">AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>Arthur Campos</td>
                             <td>Vila da Folha</td>
-                            <td>Av. Secundária, 456</td>
-                            <td>Maria Souza</td>
+                            <td><span class="badge bg-success">Ativo</span></td>
                             <td>
                                 <button class="btn btn-outline-primary btn-sm me-2">Editar</button>
                                 <button class="btn btn-outline-danger btn-sm">Remover</button>
                             </td>
                         </tr>
                         <tr>
+                            <td>Antonio Novaes</td>
                             <td>Vila da Cortina</td>
-                            <td>Av. Beta Alámo, 177</td>
-                            <td>Carlos Mariano</td>
+                            <td><span class="badge bg-success">Ativo</span></td>
                             <td>
                                 <button class="btn btn-outline-primary btn-sm me-2">Editar</button>
                                 <button class="btn btn-outline-danger btn-sm">Remover</button>
                             </td>
                         </tr>
                         <tr>
+                            <td>Benedita Novaes</td>
+                            <td>Vila da Cortina</td>
+                            <td><span class="badge bg-warning text-dark">Pendente</span></td>
+                            <td>
+                                <button class="btn btn-outline-primary btn-sm me-2">Editar</button>
+                                <button class="btn btn-outline-danger btn-sm me-2">Rejeitar</button>
+                                <button class="btn btn-outline-success btn-sm">Aprovar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Vicente Silva</td>
+                            <td>Vila da Folha</td>
+                            <td><span class="badge bg-success">Ativo</span></td>
+                            <td>
+                                <button class="btn btn-outline-primary btn-sm me-2">Editar</button>
+                                <button class="btn btn-outline-danger btn-sm">Remover</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorenzo Costa</td>
                             <td>Vila da Cerâmica</td>
-                            <td>Av. Primária, 8951</td>
-                            <td>Breno Silva</td>
+                            <td><span class="badge bg-danger">Rejeitado</span></td>
                             <td>
                                 <button class="btn btn-outline-primary btn-sm me-2">Editar</button>
                                 <button class="btn btn-outline-danger btn-sm">Remover</button>
@@ -69,7 +88,7 @@
 @push('styles')
     <style>
         .btn-primary {
-            background-color: #0d6efd; /* Exemplo de cor para o botão "Adicionar Condomínio" */
+            background-color: #0d6efd; /* Exemplo de cor para o botão "Adicionar Morador" */
             border-color: #0d6efd;
             font-weight: 500;
             padding: 0.5rem 1.5rem;
@@ -92,6 +111,9 @@
         .table thead th {
             background-color: #e9ecef; /* Cor de fundo para o cabeçalho da tabela */
             font-weight: 600;
+        }
+        .badge.bg-warning.text-dark {
+            color: #212529 !important;
         }
     </style>
 @endpush
