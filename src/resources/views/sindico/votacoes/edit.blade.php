@@ -2,35 +2,32 @@
 
 @section('title', 'Editar Votação')
 
-@section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2 sidebar">
-            <x-sindico_navbar currentPage="votacoes" />
-        </div>
-        
-        <div class="col-md-10 main-content">
-            <div class="content-header">
-                <h1 class="mb-4">Editar Votação</h1>
-                
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('sindico.votacoes.index') }}">Votações</a>
-                        </li>
-                        <li class="breadcrumb-item active">Editar: {{ $votacao->titulo }}</li>
-                    </ol>
-                </nav>
-            </div>
+@section('navbar')
+    <x-sindico_navbar current-page="votacoes" />
+@endsection
 
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card shadow">
-                        <div class="card-header bg-warning text-dark">
-                            <h5 class="mb-0">
-                                <i class="fas fa-edit"></i> Editar Votação: {{ $votacao->titulo }}
-                            </h5>
-                        </div>
+@section('content')
+    <div class="content-header">
+        <h1 class="mb-4">Editar Votação</h1>
+        
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('sindico.votacoes.index') }}">Votações</a>
+                </li>
+                <li class="breadcrumb-item active">Editar: {{ $votacao->titulo }}</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">
+                        <i class="fas fa-edit"></i> Editar Votação: {{ $votacao->titulo }}
+                    </h5>
+                </div>
                         
                         <div class="card-body">
                             @if ($errors->any())
@@ -157,14 +154,11 @@
                                     </button>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-</div>
+@endsection
 
+@push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     let opcaoCount = {{ count($opcoes) }};
@@ -209,17 +203,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+@endpush
 
+@push('styles')
 <style>
-.sidebar {
-    min-height: 100vh;
-    background-color: #f8f9fa;
-}
-
-.main-content {
-    padding: 2rem;
-}
-
 .content-header {
     border-bottom: 1px solid #e9ecef;
     padding-bottom: 1rem;
@@ -231,4 +218,5 @@ document.addEventListener('DOMContentLoaded', function() {
     border-bottom-left-radius: 0;
 }
 </style>
-@endsection
+@endpush
+
