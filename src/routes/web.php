@@ -13,6 +13,8 @@ use App\Http\Controllers\MoradorController;
 use App\Http\Controllers\Sindico\VotacoesController;
 use App\Http\Controllers\Sindico\MoradoresController;
 use App\Http\Controllers\Sindico\ResultadosController;
+use App\Http\Controllers\Morador\ResultadosController as MoradorResultadosController;
+use App\Http\Controllers\Morador\VotacoesController as MoradorVotacoesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -72,4 +74,7 @@ Route::prefix('sindico')->name('sindico.')->group(function () {
 // Rotas de Moradores
 Route::prefix('morador')->name('morador.')->group(function () {
     Route::get('/dashboard', [MoradorController::class, 'dashboard'])->name('dashboard');
+    Route::get('/votacoes', [MoradorVotacoesController::class, 'index'])->name('votacoes.index');
+    Route::post('/votacoes', [MoradorVotacoesController::class, 'store'])->name('votacoes.store');
+    Route::get('/resultados', [MoradorResultadosController::class, 'index'])->name('resultados.index');
 });

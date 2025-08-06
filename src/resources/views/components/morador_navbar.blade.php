@@ -21,14 +21,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === 'votacoes' ? 'active' : '' }}" 
-                        href="#"
+                        href="{{ route('morador.votacoes.index') }}"
                        @if($currentPage === 'votacoes') aria-current="page" @endif>
                         Votações
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $currentPage === 'resultados' ? 'active' : '' }}" 
-                       href="#"
+                       href="{{ route('morador.resultados.index') }}"
                        @if($currentPage === 'resultados') aria-current="page" @endif>
                         Resultados
                     </a>
